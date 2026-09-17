@@ -1,0 +1,50 @@
+# ==================================================================
+#  Servidor do semestre — use do Capítulo 1 ao Capítulo 9
+#
+#    docker compose up -d --build     liga (e cria, na 1ª vez)
+#    ssh -p 2222 aluno@localhost      entra no servidor (senha: aluno)
+#    docker compose restart           "reinicia" o servidor
+#
+#  ⚠️ NÃO use "docker compose down -v": o -v apaga os volumes,
+#     ou seja, todo o trabalho do semestre.
+# ==================================================================
+name: srv-turma
+
+services:
+  servidor:
+    build: .
+    image: srv-turma:latest
+    container_name: srv-turma
+    hostname: ubuntu
+    init: true
+    restart: unless-stopped
+    cap_add:
+      - SYS_PTRACE     # deixa o ss/ps mostrarem processos de outros usuários
+    ports:
+      - "2222:22"      # SSH
+      - "8080:8080"    # app-turma
+    networks:
+      rede-lab:
+        ipv4_address: 172.30.0.10
+    volumes:
+      - home:/home
+      - srv:/srv
+      - opt:/opt
+      - inicio:/etc/inicio.d
+      - logs:/var/log
+      - chaves-ssh:/etc/ssh/chaves
+
+networks:
+  rede-lab:
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24
+          gateway: 172.30.0.1
+
+volumes:
+  home:
+  srv:
+  opt:
+  inicio:
+  logs:
+  chaves-ssh:
