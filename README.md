@@ -25,7 +25,7 @@ monitorada e quais cuidados de segurança foram tomados.
 | Pasta | Aula | Pergunta norteadora | Status |
 |-------|------|---------------------|--------|
 | [capitulo-01/](capitulo-01/) | Linux como Servidor | Onde nossa aplicação vai rodar? | ✅ disponível |
-| capitulo-02/ | Git e GitHub na infraestrutura | Como o código da equipe chega ao servidor? | em breve |
+| [capitulo-02/](capitulo-02/) | Git e GitHub na infraestrutura | Como o código da equipe chega ao servidor? | ✅ disponível |
 | capitulo-03/ | Docker Compose + Redes | Como os serviços da aplicação se comunicam? | em breve |
 | capitulo-04/ | Nginx como Reverse Proxy | Como disponibilizar nossas aplicações de maneira organizada? | em breve |
 | capitulo-05/ | DNS e Domínio | Como acessar a aplicação pelo nome em vez do IP? | em breve |
